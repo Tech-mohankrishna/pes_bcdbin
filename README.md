@@ -6,7 +6,7 @@ output is a 7-bit signal in binary representation.
 
 ## code
 
-```v
+``` v
 `timescale 1ns / 1ps
 
 module pes_bcdbin(
@@ -87,7 +87,7 @@ endmodule
 ```
 ## Testbench
 
-```v
+``` v
 `timescale 1ns / 1ps
 
 module pes_bcdbin_tb;
