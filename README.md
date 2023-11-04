@@ -102,7 +102,7 @@ cd OpenLane/
 make mount 
 ./flow.tcl -interactive
 package require openlane 0.9
-prep -design pes_binary_to_gray_converter
+prep -design openlane/pes_bcdbin -tag run-1
 ```
 ![prep_design](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/dea59dea-885d-4cea-8c28-f6c653e206c1)
 
@@ -134,7 +134,7 @@ git clone https://github.com/hwiiiii/sky130A
 ```
 
 ```
-magic -T /home/pavanstalegaon/OpenLane/pdks/sky130A/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def pes_binary_to_gray_converter.def &
+magic -T /home/mohankrishna/sky130A/sky130A/1lbs.tech/magic/sky130A. tech lef read ../../tmp/merged.nom.lef def read pes_bcdbin.def
 ```
 ![floor_plan_command](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/03e6ec54-22f5-4f1e-8817-e2cd88667472)
 ![floorplan](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/aeadfc1d-2f12-4603-ab2b-37e693dbbe7f)
@@ -173,7 +173,7 @@ run_routing
 
 
 ```
-magic -T /home/pavanstalegaon/OpenLane/pdks/sky130A/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def pes_binary_to_gray_converter.def &
+magic -T /home/mohankrishna/sky130A/sky130A/1lbs.tech/magic/sky130A. tech lef read ../../tmp/merged.nom.lef def read pes_bcdbin.def
 ```
 ![routing](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/dc1ec91c-672d-4ab6-8097-2c580854c7bd)
 
