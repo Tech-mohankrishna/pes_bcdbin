@@ -150,7 +150,7 @@ run_placement
 
 
 ```
-magic -T /home/pavanstalegaon/OpenLane/pdks/sky130A/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def pes_binary_to_gray_converter.def &
+magic -T /home/mohankrishna/sky130A/sky130A/1lbs.tech/magic/sky130A. tech lef read ../../tmp/merged.nom.lef def read pes_bcdbin.def
 ```
 
 ![placement](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/b9d9c041-9ad6-463a-8cde-ec1b73a570e3)
