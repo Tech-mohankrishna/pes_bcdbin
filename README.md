@@ -6,6 +6,10 @@ output is a 7-bit signal in binary representation.
 
 ## code
 
+<details>
+<summary>Simulation, Synthesis</summary>
+<br>
+
 ## Simulation
 
 ```
@@ -32,3 +36,6 @@ show
 ## GLS
 
 ![image](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/496e32ea-a52e-40ae-94cd-e52d8df06241)
+
+
+</details>
