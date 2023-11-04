@@ -5,7 +5,85 @@ Assume that the input is an 8-bit signal in BCD format (i.e., two BCD digits) an
 output is a 7-bit signal in binary representation.
 
 ## code
+'''
+`timescale 1ns / 1ps
 
+module pes_bcdbin(
+	input clk,rst_n,
+	input start,
+	input[3:0] dig1,dig0,
+	output reg[6:0] bin, //2-digit number takes at most 7 bits
+	output reg ready,done_tick
+    );
+	 //FSM state declarations
+	 localparam[1:0] idle=2'd0,
+							op=2'd1,
+							done=2'd2;
+	 reg[1:0] state_reg,state_nxt;
+	 reg[6:0] bin_nxt;
+	 reg[3:0] dig1_reg,dig1_nxt;
+	 reg[3:0] dig0_reg,dig0_nxt;
+	 reg[2:0] n_reg,n_nxt; //stores the width of the resulting binary
+	 
+	 //FSM register operation
+	 always @(posedge clk,negedge rst_n) begin
+		if(!rst_n) begin
+			state_reg<=idle;
+			bin<=0;
+			dig1_reg<=0;
+			dig0_reg<=0;
+			n_reg<=0;
+		end
+		else begin
+			state_reg<=state_nxt;
+			bin<=bin_nxt;
+			dig1_reg<=dig1_nxt;
+			dig0_reg<=dig0_nxt;
+			n_reg<=n_nxt;
+		end
+	 end
+	 //FSM next-state logic
+	 always @* begin
+		state_nxt=state_reg;
+		bin_nxt=bin;
+		dig1_nxt=dig1_reg;
+		dig0_nxt=dig0_reg;
+		n_nxt=n_reg;
+		ready=0;
+		done_tick=0;
+		case(state_reg)
+				idle: begin
+							ready=1;
+							if(start) begin
+								bin_nxt=0;
+								dig1_nxt=dig1;
+								dig0_nxt=dig0;
+								n_nxt=7; //binary has 7 bits of output thus 7 "shifts" are needed
+								state_nxt=op;
+							end
+						end
+				  op: begin //special shift-operation for converting bcd to bin.Check the book for more info
+							if( {dig1_reg[0],dig0_reg[3:1]} >= 8 ) ///special shift-operation for converting bcd to bin.Check the book for more info
+								dig0_nxt= {dig1_reg[0],dig0_reg[3:1]} - 3;
+							else dig0_nxt= {dig1_reg[0],dig0_reg[3:1]};
+							dig1_nxt=dig1_reg>>1;
+							bin_nxt={dig0_reg[0],bin[6:1]};
+							n_nxt=n_reg-1;
+							if(n_nxt==0) state_nxt=done;
+						end
+				done: begin
+							done_tick=1;
+							state_nxt=idle;
+						end
+			default: state_nxt=idle;
+		endcase
+	 end
+	 
+
+
+endmodule
+
+'''
 
 ## Simulation
 
@@ -148,7 +226,9 @@ run_cts
 
 **Routing**
 + Command to exectue
-```
+```![Screenshot from 2023-11-04 17-35-22](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/fbdd02cf-414e-4fcd-9ea3-7d0c3bb02871)
+![Screenshot from 2023-11-04 17-35-29](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/82f628e4-486b-48f7-831d-add74b055e87)
+
 run_routing
 ```
 ![run_routing](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/8dfe329e-c02a-449b-8d5d-fbcc1266925e)
@@ -162,16 +242,27 @@ magic -T /home/mohankrishna/sky130A/sky130A/1lbs.tech/magic/sky130A. tech lef re
 
 
 **These reports generated are given below , after executing run_routing command**
-![power_report](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/b96dbaae-fac3-45fa-9f88-3609928a0477)
-![skew_report](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/e856e15d-aba6-44dd-a864-33c173515a98)
-![area_report](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/b1bae47a-ba14-4a4a-934c-82219af0be70)
+
+![Screenshot from 2023-11-04 17-36-16](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/8764bb5e-0fed-4748-9691-552ca56e8786)
+![Screenshot from 2023-11-04 17-36-07](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/b7df8855-d773-470e-9ee0-28706a87300b)
+![Screenshot from 2023-11-04 17-35-52](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/c554c34e-57b1-42b1-ac25-c2d55be21c19)
+![Screenshot from 2023-11-04 17-35-44](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/4c1eed3f-ddbe-4aca-8fa7-ba9254a7cf5c)
+![Screenshot from 2023-11-04 17-35-38](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/0d11fea0-3b72-438b-a118-8bc302bdbafa)
+![Screenshot from 2023-11-04 17-35-14](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/20a3e154-baa5-4a9f-b85a-5da24f55d41f)
+![power_report_new](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/25857549-4c41-4076-bbfd-8b8ae40f4a02)
+![area_report_new](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/8fe1db38-ae1b-4652-b6f0-16c5912c502d)
+![summary_report_new](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/ca2926cf-a897-4d59-91b5-d93b6d1d75b9)
+![skew_report_new](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/2658b53b-027d-4a78-9a95-7a90a39e13a4)
+
+
+
 
 #### Statistics
-- Area = 3969 um2
-- Internal Power = 2.78e-04 W
-- Switching Power = 2.21e-04 W
-- Leakage Power = 1.51e-04 W
-- Total Power = 4.90e-04 W
+- Area = 1230 um2
+- Internal Power = 2.81e-04 W
+- Switching Power = 1.81e-04 W
+- Leakage Power = 6.73e-10 W
+- Total Power = 4.61e-04 W
 
 
 
