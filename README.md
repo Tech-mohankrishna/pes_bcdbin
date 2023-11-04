@@ -180,12 +180,16 @@ magic -T /home/mohankrishna/sky130A/sky130A/1lbs.tech/magic/sky130A. tech lef re
 
 
 **These reports generated are given below , after executing run_routing command**
+![power_report](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/b96dbaae-fac3-45fa-9f88-3609928a0477)
+![skew_report](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/e856e15d-aba6-44dd-a864-33c173515a98)
+![area_report](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/b1bae47a-ba14-4a4a-934c-82219af0be70)
 
 #### Statistics
-- Internal Power = 
-- Switching Power = 
-- Leakage Power = =
-- Total Power = 
+- Area = 3969 um2
+- Internal Power = 2.78e-04 W
+- Switching Power = 2.21e-04 W
+- Leakage Power = 1.51e-04 W
+- Total Power = 4.90e-04 W
 
 
 
