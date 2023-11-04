@@ -169,7 +169,8 @@ run_cts
 ```
 run_routing
 ```
-![Uploading run_routing.png…]()
+![run_routing](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/8dfe329e-c02a-449b-8d5d-fbcc1266925e)
+
 
 
 ```
