@@ -6,9 +6,6 @@ output is a 7-bit signal in binary representation.
 
 ## code
 
-<details>
-<summary>Simulation, Synthesis</summary>
-<br>
 
 ## Simulation
 
@@ -38,14 +35,10 @@ show
 ![image](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/496e32ea-a52e-40ae-94cd-e52d8df06241)
 
 
-</details>
-
 
 ## Stage 2 (RTL2GDSII - OPENLANE) - Table of contents
 
-<details>
-<summary>Introduction to Openlane ASIC Design Flow</summary>
-<br>
+
 
 ![image](https://github.com/Pavan2280/pes_pd/assets/131603225/24e63c09-da0d-4da6-943c-f54d6abbda85)
 
@@ -89,12 +82,6 @@ show
    1. **CVC** - CVC is a tool primarily used for verification and debugging of digital designs.
    2. **Netgen** - Netgen is an open-source digital netlist comparison and LVS (Layout vs. Schematic) tool.
 
-[Back to Stage-2](#Stage-2)
-</details>
-
-<details>
-<summary>Interactive OpenLane flow</summary>
-<br>
 
 Open terminal and type the following commands.
 ```
@@ -106,11 +93,6 @@ prep -design openlane/pes_bcdbin -tag run-1
 ```
 ![prep_design](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/dea59dea-885d-4cea-8c28-f6c653e206c1)
 
-</details>
-
-<details>
-<summary>Synthesis,Floorplan,Placement,CTS,Routing</summary>
-<br>
 
 **Synthesis**
 + Command to exectue
