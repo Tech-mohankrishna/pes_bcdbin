@@ -196,9 +196,8 @@ git clone https://github.com/hwiiiii/sky130A
 ```
 magic -T /home/mohankrishna/sky130A/sky130A/1lbs.tech/magic/sky130A. tech lef read ../../tmp/merged.nom.lef def read pes_bcdbin.def
 ```
-![floor_plan_command](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/03e6ec54-22f5-4f1e-8817-e2cd88667472)
-![floorplan](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/aeadfc1d-2f12-4603-ab2b-37e693dbbe7f)
-![floorplan_result](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/0c56c6c5-7e33-433b-ac38-ecc7d10086cb)
+![Screenshot from 2023-11-04 17-45-50](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/e660045c-4708-4c11-82b1-7d63b226db13)
+
 
 
 **Placement**
@@ -206,14 +205,11 @@ magic -T /home/mohankrishna/sky130A/sky130A/1lbs.tech/magic/sky130A. tech lef re
 ```
 run_placement
 ```
-![placement](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/0122f17b-5a1f-4fb7-b9a0-79bcf81a8883)
-
-
 ```
 magic -T /home/mohankrishna/sky130A/sky130A/1lbs.tech/magic/sky130A. tech lef read ../../tmp/merged.nom.lef def read pes_bcdbin.def
 ```
+![Screenshot from 2023-11-04 17-48-48](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/0decb9b3-3415-4db1-a4f8-222c13fdb667)
 
-![placement](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/b9d9c041-9ad6-463a-8cde-ec1b73a570e3)
 
 
 **CTS**
@@ -226,9 +222,7 @@ run_cts
 
 **Routing**
 + Command to exectue
-```![Screenshot from 2023-11-04 17-35-22](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/fbdd02cf-414e-4fcd-9ea3-7d0c3bb02871)
-![Screenshot from 2023-11-04 17-35-29](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/82f628e4-486b-48f7-831d-add74b055e87)
-
+```
 run_routing
 ```
 ![run_routing](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/8dfe329e-c02a-449b-8d5d-fbcc1266925e)
@@ -238,7 +232,8 @@ run_routing
 ```
 magic -T /home/mohankrishna/sky130A/sky130A/1lbs.tech/magic/sky130A. tech lef read ../../tmp/merged.nom.lef def read pes_bcdbin.def
 ```
-![routing](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/dc1ec91c-672d-4ab6-8097-2c580854c7bd)
+![Screenshot from 2023-11-04 17-50-06](https://github.com/Tech-mohankrishna/pes_bcdbin/assets/57735263/b83e6c10-1194-43f3-80f4-6a1bb7ce38d9)
+
 
 
 **These reports generated are given below , after executing run_routing command**
